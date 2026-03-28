@@ -1,0 +1,30 @@
+{
+  "name": "mern-todo-app",
+  "version": "1.0.0",
+  "description": "Full-stack MERN todo application with TypeScript",
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "cd client && npm run lint && cd ../server && npm run lint",
+    "lint:fix": "cd client && npm run lint:fix && cd ../server && npm run lint:fix",
+    "format": "cd client && npm run format && cd ../server && npm run format"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^11.2.6"
+  },
+  "lint-staged": {
+    "client/**/*.{js,jsx,ts,tsx,json,css,md}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "server/**/*.{js,ts}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
